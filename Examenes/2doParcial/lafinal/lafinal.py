@@ -10,8 +10,6 @@ import os
 import matplotlib.pyplot as plt
 import random
 
-import pandas as pd
-
 # Ventana = 9 x 7 recuadros
 #
 # B = Balón
@@ -191,8 +189,8 @@ EPISODIOS     = 0 # Número de episodios
 
  # Parámetros de aprendizaje
 EPSILON       = 0.9 # Probabilidad de exploración
-GAMMA         = 0.0  # Factor de descuento
-LEARNING_RATE = 1.0  # Tasa de aprendizaje
+GAMMA         = 0.1  # Factor de descuento 
+LEARNING_RATE = 1.0  # Tasa de aprendizaje 
 
 
 
@@ -298,7 +296,7 @@ while True:
 
 
 
-    while (balon.y > 0):
+    while (balon.y > 0): # Mientras el balón no haya llegado al piso
         for event in pygame.event.get():
 
             if (event.type == QUIT):
@@ -382,7 +380,7 @@ while True:
         ##############
         if not (nuevo_estado in Q):
             Q[nuevo_estado] = [0] * 19
-        Q[estado][accion] += LEARNING_RATE * (recompensa + GAMMA * max(Q[nuevo_estado]) - Q[estado][accion])
+        Q[estado][accion] += LEARNING_RATE * (recompensa + GAMMA * max(Q[nuevo_estado]) - Q[estado][accion]) 
 
 
 
